@@ -12,24 +12,27 @@ function App() {
     const debounce = setTimeout(async () => {
       const searchPoke = async () => {
         try {
-          if (search){
-            const {data} = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search}`)
-            setPokes(data)
-            console.log(pokes)
+          const {data} = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
+          const allPokes = data.results;
+          if (search) {
+            const filtered = allPokes.filter(poke =>
+              poke.name.toLowerCase().includes(search.toLowerCase())
+            );
+            setPokes(filtered);
+            console.log(filtered)
           } else {
-            const {data} = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
-            setPokes(data)
-            console.log(pokes)
+            setPokes(allPokes); // default, kalau search kosong
+            console.log(allPokes)
           }
         } catch (error) {
           console.log(error)
-        } finally {
-          setTimeout(() => {}, 500)
-        }
+        } 
       }
       searchPoke()
-      clearTimeout(debounce)
+      
     }, 500)
+    return () => clearTimeout(debounce)
+
   }, [search])
   
 
