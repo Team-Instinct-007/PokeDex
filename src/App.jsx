@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -80,9 +81,17 @@ function App() {
       </form>
 
       <div>
-        {/* {pokes?.map((poke) => {
-
-        })} */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+          {completed?.map((pokemon) => (
+            <Link 
+              key={pokemon.id}
+              to={`/detail/${pokemon.id}`}
+              className="p-4 bg-white rounded-lg shadow hover:shadow-lg transition-shadow"
+            >
+              <h2 className="text-lg font-semibold capitalize text-center">{pokemon.name}</h2>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
     <div className="container mx-auto font-serif">
