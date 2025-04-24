@@ -64,7 +64,7 @@ function DetailPage() {
 
   return (
     <div className="container mx-auto p-8">
-      <div className="bg-white rounded-lg shadow-lg p-6">
+      <div className="bg-slate-700 text-white rounded-lg shadow-lg p-6">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <h1 className="text-3xl font-bold capitalize">{pokemon.name}</h1>
@@ -78,7 +78,7 @@ function DetailPage() {
               <Star className="w-6 h-6" fill={isFavorite ? "currentColor" : "none"} />
             </button>
           </div>
-          <span className="text-xl text-gray-600">{formatPokemonId(pokemon.id)}</span>
+          <span className="text-xl text-white">{formatPokemonId(pokemon.id)}</span>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

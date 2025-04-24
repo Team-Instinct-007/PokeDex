@@ -53,7 +53,7 @@ function PokemonCard({ pokemonId, onRemove }) {
 
   return (
     <Link to={`/detail/${pokemonId}`} className="block">
-      <div className="p-4 bg-white rounded-lg shadow hover:shadow-lg transition-shadow">
+      <div className="p-4 bg-slate-700 text-white rounded-lg shadow-xl/40 hover:shadow-lg transition-shadow">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold capitalize">{pokemon.name}</h2>
           <button
